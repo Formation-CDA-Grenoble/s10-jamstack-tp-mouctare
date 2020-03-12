@@ -1,7 +1,25 @@
 import React from 'react';
+import RestoList from './components/RestoList'
+import RestoPreview from './components/RestoPreview'
+import Resto from './components/Resto'
+import { Container } from 'react-bootstrap';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 const App = () =>
-  <div>Clé d'API de mon projet DatoCMS: {process.env.REACT_APP_DATOCMS_API_TOKEN}</div>
+<BrowserRouter>
+  <Container>
+    <RestoList />
+    <RestoPreview/>
+    <Resto/>
+  </Container>
+    <Container>
+      <Switch>
+        <Route exact path='/' component={RestoList} />
+        <Route exact path='/Resto/:slug' component={Resto} />
+        
+      </Switch>
+    </Container>
+  </BrowserRouter>
 ;
 
 export default App;
